@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>card编辑</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css">
+    <script src="libs/angular.js"></script>
+    <script src="libs/angular-resource.js"></script>
+</head>
+<body>
+
+    <main   ng-app="Card" ng-controller="EditCtrl">
+        <form  name="editForm" ng-submit="save()">
+            <div>姓名：</div>
+            <div>
+                <input type="text" ng-model="card.name" name="name" ng-minlength="2" ng-maxlength="4" autofocus required placeholder="请输入姓名"> 
+                <i class="icon-ok-sign" ng-show="editForm.name.$valid"></i>
+                <i class="icon-remove-sign" ng-show="editForm.name.$invalid"></i>           
+            </div>
+            <div>职位：</div>
+            <div>
+                <input type="text" name="title"  required placeholder="请输入Z职位" ng-model="card.title">          
+            </div>
+            <div>地址：</div>
+            <div>
+                <input type="text" name="address"  required placeholder="请输入地址" ng-model="card.address">            
+            </div>
+            <div>手机号：</div>
+            <div>
+                <!-- ng-pattern指令接收一个正则表达式验证规则要根据正则表达式来验证文本框数据
+                1：是首位
+                 -->
+                <input type="tel" name="phone" ng-model="card.phone" ng-pattern="'1[35789][0-9]{9}'" required placeholder="请输入手机号"> 
+                <i class="icon-ok-sign" ng-show="editForm.phone.$valid"></i>
+                <i class="icon-remove-sign" ng-show="editForm.phone.$invalid"></i>              
+            </div>
+            <div>QQ号：</div>
+            <div>
+                <input type="text" name="qq"  required placeholder="请输入qq号码" ng-model="card.qq">            
+            </div>
+            <div>电子邮箱：</div>
+            <div>
+                <input type="email" name="email" ng-model="card.email" required placeholder="请输入电子邮箱">
+                <i class="icon-ok-sign" ng-show="editForm.email.$valid"></i>
+                <i class="icon-remove-sign" ng-show="editForm.email.$invalid"></i>              
+            </div>
+            <div>个人简介：</div>
+            <div>
+                <textarea name="description"  required placeholder="请输入个人简介" ng-model="card.description">  </textarea>          
+            </div>
+            <div><input type="submit" ng-disabled="editForm.$invalid" value="保存"></div>
+        </form>
+    </main>
+    <!-- <script src="libs/jquery.js"></script> -->
+    <script src="index.js">
+    // $('form').submit(function(event){
+    //     // 阻止表单默认提交
+    //     event.preventDefault();
+    //     // 调用表单序列化
+    //     var data = $(this).serialize();
+    //     $.post($(this).attr('action'),
+    //     data,
+    //     function(res){
+    //         location.href='/';
+    //     }
+    // )
+    // });
+    // angular.module('Edit',[]).controller('EditCtrl',function($scope,$http){
+    //     $http.get('api/getdata').then(function(res){
+    //         angular.extend($scope,res.data);
+    //         console.log(res);
+    //     })
+    // })
+    </script>
+</body>
+</html>
